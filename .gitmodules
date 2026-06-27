@@ -1,0 +1,3 @@
+[submodule "BuildServices"]
+	path = BuildServices
+	url = https://github.com/Virviglaz/BuildServices.git
