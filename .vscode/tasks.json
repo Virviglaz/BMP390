@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "make-all",
+            "type": "shell",
+            "command": "make all",
+            "group": "build"
+        },
+        {
+            "label": "scp-to-remote",
+            "type": "shell",
+            "command": "ssh pavel@192.168.0.2 'killall -q -9 BMP390; rm -f /tmp/BMP390' && scp build/BMP390 pavel@192.168.0.2:/tmp",
+            "dependsOn": "make-all",
+            "group": "build"
+        },
+        {
+            "label": "run-remote-gdbserver",
+            "type": "shell",
+            "command": "ssh pavel@192.168.0.2 'killall -q -9 gdbserver BMP390; nohup gdbserver :9091 /tmp/BMP390 > /dev/null 2>&1 &'",
+            "dependsOn": "scp-to-remote",
+            "problemMatcher": []
+        }
+    ]
+}

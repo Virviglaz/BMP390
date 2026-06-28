@@ -1,0 +1,34 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Remote Debug BMP390 (AArch64 - Stable)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/BMP390",
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb-multiarch",
+            "miDebuggerServerAddress": "192.168.0.2:9091",
+            "preLaunchTask": "run-remote-gdbserver",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set remote sysroot",
+                    "text": "set sysroot target:",
+                    "ignoreFailures": false
+                }
+            ],
+            "linux": {
+                "MIMode": "gdb"
+            }
+        }
+    ]
+}
